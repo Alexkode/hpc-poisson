@@ -1,5 +1,7 @@
 # HPC Poisson laboratory
 
+[![Verify project](https://github.com/Alexkode/hpc-poisson/actions/workflows/verify.yml/badge.svg)](https://github.com/Alexkode/hpc-poisson/actions/workflows/verify.yml)
+
 A reproducible study of a 3D finite-difference Poisson solver, covering numerical
 correctness, CPU threading, distributed-memory communication and GPU execution.
 
@@ -18,6 +20,8 @@ baseline GPU kernel; it does not implement multi-GPU communication. The mixed CP
 variant stores fields in FP32 and performs updates and reductions in FP64.
 
 ## Run locally
+
+Install the Python dependencies with `python -m pip install -r requirements.txt`.
 
 ```bash
 make
@@ -72,3 +76,18 @@ from uninstrumented performance runs.
 - Measured scaling, including cases where additional resources do not help.
 
 Created with AI assistance. The experimental records document what was actually run.
+
+## Installation and verification
+
+Clone this repository and run commands from its root. Each repository has its own dependencies and tests.
+
+```sh
+python3.11 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+bash scripts/verify.sh
+```
+
+GitHub Actions checks the code contracts and the consistency of published experimental records. It does not rerun training or cluster benchmarks. See [experiment provenance](ENVIRONMENT.md) and [measured report](results/REPORT.md).
+
+A C++17 compiler is required. `make openmp` and `make mpi` enable the optional CPU backends; GitHub Actions builds both. CUDA tests require an allocated GPU and are optional.
