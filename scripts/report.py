@@ -42,6 +42,22 @@ if gpu and serial:
     lines.extend(["",f"Single-GPU FP64 vs one CPU core: median speedup {ratio:.2f}×.",
                   "This comparison does not represent optimized CPU or GPU library performance."])
 else:lines.extend(["","GPU validation and timings are pending; no GPU performance claim is made."])
+omp={}
+for threads in (1,2,4,8):
+    timings=[json.loads(p.read_text())["seconds"] for p in root.glob(f"openmp-{threads}-*.json")]
+    if timings:omp[threads]=statistics.median(timings)
+if omp:
+    lines.extend(["","## OpenMP threading","","96³ grid, 300 fixed sweeps, one process allocated eight CPU cores; three repetitions.","",
+                  "| Threads | Median seconds | Speedup |","|---|---:|---:|"])
+    for threads,seconds in omp.items():lines.append(f"| {threads} | {seconds:.5f} | {omp[1]/seconds:.3f} |")
+if (root/"precision-mixed.json").exists():
+    lines.extend(["","## Storage precision","","24³ grid, two threads, convergence target 1e-5; FP64 update arithmetic in both configurations.","",
+                  "| Storage | Sweeps | Relative residual | Relative solution error |","|---|---:|---:|---:|"])
+    for name in ("double","mixed"):
+        r=json.loads((root/f"precision-{name}.json").read_text())
+        assert math.isfinite(r["relative_residual"]) and r["relative_residual"]<1e-5
+        lines.append(f"| {name} | {r['iterations']} | {r['relative_residual']:.2e} | {r['relative_solution_error']:.2e} |")
+    lines.append("These results do not establish that FP32 fields can satisfy arbitrary tighter tolerances.")
 lines.extend(["","Raw timings are retained as JSON. These measurements characterize this implementation",
               "and these resource placements; they are not hardware peak-performance estimates.",""])
 (root/"REPORT.md").write_text("\n".join(lines))

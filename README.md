@@ -57,6 +57,8 @@ throughput, not equivalent convergence behavior. Three repetitions are retained.
 Report median times and the spread, speedup relative to one rank, and efficiency
 `speedup/ranks`. GPU comparisons use the same 128³ problem and sweep count.
 
+`scripts/cluster_precision.sbatch` measures OpenMP threads 1/2/4/8 and compares FP64 with FP32 field storage at residual tolerance 1e-5. It compiles with GCC independently of MPI. The current CESGA MPI wrapper may require an NVIDIA management library on some CPU nodes; adapt cluster modules if it is unavailable. The recorded MPI measurements and GitHub MPI tests succeeded.
+
 Results must retain hardware and software provenance. Raw JSON files, the numerical
 verification and plots belong in `results/`. Missing measurements are not replaced
 by estimated timings. Nsight traces are optional and must be collected separately

@@ -16,5 +16,26 @@ Fixed-sweep timings. Three repetitions per configuration.
 Single-GPU FP64 vs one CPU core: median speedup 94.95×.
 This comparison does not represent optimized CPU or GPU library performance.
 
+## OpenMP threading
+
+96³ grid, 300 fixed sweeps, one process allocated eight CPU cores; three repetitions.
+
+| Threads | Median seconds | Speedup |
+|---|---:|---:|
+| 1 | 0.07819 | 1.000 |
+| 2 | 0.07312 | 1.069 |
+| 4 | 0.07288 | 1.073 |
+| 8 | 0.07304 | 1.071 |
+
+## Storage precision
+
+24³ grid, two threads, convergence target 1e-5; FP64 update arithmetic in both configurations.
+
+| Storage | Sweeps | Relative residual | Relative solution error |
+|---|---:|---:|---:|
+| double | 1850 | 8.23e-06 | 1.31e-03 |
+| mixed | 1850 | 9.49e-06 | 1.31e-03 |
+These results do not establish that FP32 fields can satisfy arbitrary tighter tolerances.
+
 Raw timings are retained as JSON. These measurements characterize this implementation
 and these resource placements; they are not hardware peak-performance estimates.

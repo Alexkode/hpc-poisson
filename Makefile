@@ -10,6 +10,7 @@ build/poisson: src/poisson.cpp | build
 	$(CXX) $(CXXFLAGS) $< -o $@
 openmp: | build
 	$(CXX) $(CXXFLAGS) -fopenmp src/poisson.cpp -o build/poisson-omp
+	$(CXX) $(CXXFLAGS) -DFIELD_FLOAT -fopenmp src/poisson.cpp -o build/poisson-omp-mixed
 mpi: | build
 	mpicxx $(CXXFLAGS) -DUSE_MPI -fopenmp src/poisson.cpp -o build/poisson-mpi
 	mpicxx $(CXXFLAGS) -DUSE_MPI -DFIELD_FLOAT -fopenmp src/poisson.cpp -o build/poisson-mixed
