@@ -13,7 +13,8 @@ Fixed-sweep timings. Three repetitions per configuration.
 | weak | 4 | 0.33290 | 0.674 |
 | weak | 8 | 0.37252 | 0.603 |
 
-GPU validation and timings are pending; no GPU performance claim is made.
+Single-GPU FP64 vs one CPU core: median speedup 94.95×.
+This comparison does not represent optimized CPU or GPU library performance.
 
 Raw timings are retained as JSON. These measurements characterize this implementation
 and these resource placements; they are not hardware peak-performance estimates.
