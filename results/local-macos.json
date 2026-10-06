@@ -1,0 +1,90 @@
+{
+  "hardware": "macOS-15.7.7-arm64-arm-64bit",
+  "machine": "arm64",
+  "command": [
+    "portfolio/projects/hpc-poisson/build/poisson",
+    "--n",
+    "96",
+    "--iterations",
+    "500",
+    "--tolerance",
+    "0"
+  ],
+  "runs": [
+    {
+      "backend": "cpu",
+      "precision": "fp64",
+      "nx": 96,
+      "ny": 96,
+      "nz": 96,
+      "ranks": 1,
+      "threads": 1,
+      "overlap": false,
+      "iterations": 500,
+      "seconds": 0.321507292,
+      "relative_residual": 0.81073308407,
+      "relative_solution_error": 0.810716538851,
+      "updates_per_second": 1375919025.81
+    },
+    {
+      "backend": "cpu",
+      "precision": "fp64",
+      "nx": 96,
+      "ny": 96,
+      "nz": 96,
+      "ranks": 1,
+      "threads": 1,
+      "overlap": false,
+      "iterations": 500,
+      "seconds": 0.325071958,
+      "relative_residual": 0.81073308407,
+      "relative_solution_error": 0.810716538851,
+      "updates_per_second": 1360831007.15
+    },
+    {
+      "backend": "cpu",
+      "precision": "fp64",
+      "nx": 96,
+      "ny": 96,
+      "nz": 96,
+      "ranks": 1,
+      "threads": 1,
+      "overlap": false,
+      "iterations": 500,
+      "seconds": 0.322244,
+      "relative_residual": 0.81073308407,
+      "relative_solution_error": 0.810716538851,
+      "updates_per_second": 1372773426.35
+    },
+    {
+      "backend": "cpu",
+      "precision": "fp64",
+      "nx": 96,
+      "ny": 96,
+      "nz": 96,
+      "ranks": 1,
+      "threads": 1,
+      "overlap": false,
+      "iterations": 500,
+      "seconds": 0.322498125,
+      "relative_residual": 0.81073308407,
+      "relative_solution_error": 0.810716538851,
+      "updates_per_second": 1371691695.88
+    },
+    {
+      "backend": "cpu",
+      "precision": "fp64",
+      "nx": 96,
+      "ny": 96,
+      "nz": 96,
+      "ranks": 1,
+      "threads": 1,
+      "overlap": false,
+      "iterations": 500,
+      "seconds": 0.322706292,
+      "relative_residual": 0.81073308407,
+      "relative_solution_error": 0.810716538851,
+      "updates_per_second": 1370806863.6
+    }
+  ]
+}

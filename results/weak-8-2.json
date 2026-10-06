@@ -1,0 +1,1 @@
+{"backend":"cpu","precision":"fp64","nx":64,"ny":64,"nz":512,"ranks":8,"threads":1,"overlap":true,"iterations":500,"seconds":0.264297414,"relative_residual":0.978436540647,"relative_solution_error":0.978433719573,"updates_per_second":3967409230.88}

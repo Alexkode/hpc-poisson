@@ -1,0 +1,14 @@
+{
+  "system": "CESGA FinisTerrae III",
+  "job_id": "10376285",
+  "processor": "Intel Xeon Platinum 8352Y, 2.20 GHz",
+  "sockets_per_node": 2,
+  "physical_cores_per_node": 64,
+  "allocated_nodes": 2,
+  "allocated_mpi_slots_per_node": 4,
+  "threads_per_rank": 1,
+  "compiler": "GCC 13.4.0",
+  "mpi": "OpenMPI 5.0.9",
+  "placement": "Default OpenMPI slot mapping inside the Slurm allocation",
+  "repetitions_per_configuration": 3
+}
