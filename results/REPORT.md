@@ -22,10 +22,10 @@ This comparison does not represent optimized CPU or GPU library performance.
 
 | Threads | Median seconds | Speedup |
 |---|---:|---:|
-| 1 | 0.07819 | 1.000 |
-| 2 | 0.07312 | 1.069 |
-| 4 | 0.07288 | 1.073 |
-| 8 | 0.07304 | 1.071 |
+| 1 | 0.61316 | 1.000 |
+| 2 | 0.24321 | 2.521 |
+| 4 | 0.14943 | 4.103 |
+| 8 | 0.06981 | 8.784 |
 
 ## Storage precision
 

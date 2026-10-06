@@ -44,7 +44,9 @@ if gpu and serial:
 else:lines.extend(["","GPU validation and timings are pending; no GPU performance claim is made."])
 omp={}
 for threads in (1,2,4,8):
-    timings=[json.loads(p.read_text())["seconds"] for p in root.glob(f"openmp-{threads}-*.json")]
+    records=[json.loads(p.read_text()) for p in root.glob(f"openmp-{threads}-*.json")]
+    assert all(r['threads']==threads for r in records),'Scheduler overrode OMP_NUM_THREADS: rerun with env set inside srun'
+    timings=[r['seconds'] for r in records]
     if timings:omp[threads]=statistics.median(timings)
 if omp:
     lines.extend(["","## OpenMP threading","","96³ grid, 300 fixed sweeps, one process allocated eight CPU cores; three repetitions.","",
@@ -55,6 +57,7 @@ if (root/"precision-mixed.json").exists():
                   "| Storage | Sweeps | Relative residual | Relative solution error |","|---|---:|---:|---:|"])
     for name in ("double","mixed"):
         r=json.loads((root/f"precision-{name}.json").read_text())
+        assert r['threads']==2
         assert math.isfinite(r["relative_residual"]) and r["relative_residual"]<1e-5
         lines.append(f"| {name} | {r['iterations']} | {r['relative_residual']:.2e} | {r['relative_solution_error']:.2e} |")
     lines.append("These results do not establish that FP32 fields can satisfy arbitrary tighter tolerances.")

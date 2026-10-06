@@ -1,1 +1,1 @@
-{"backend":"cpu","precision":"fp64","nx":24,"ny":24,"nz":24,"ranks":1,"threads":8,"overlap":false,"iterations":1850,"seconds":0.023055379,"relative_residual":8.23426106167e-06,"relative_solution_error":0.00130874182977,"updates_per_second":1109259578.86}
+{"backend":"cpu","precision":"fp64","nx":24,"ny":24,"nz":24,"ranks":1,"threads":2,"overlap":false,"iterations":1850,"seconds":0.028409813,"relative_residual":8.23426106167e-06,"relative_solution_error":0.00130874182977,"updates_per_second":900195999.178}
